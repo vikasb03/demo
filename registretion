@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration UI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="wrapper">
+
+        <div class="left">
+            <div class="text">
+                <h1>HI THERE!</h1>
+                <p>Join us and enjoy</p>
+            </div>
+        </div>
+
+        <div class="right">
+            <h2>REGISTRATION FORM </h2>
+
+            <form id="registerForm">
+
+                <div class="row">
+                    <input type="text" id="name" placeholder="Full Name" required><br /> <br />
+
+                     <div class="row">
+                       <label>Gender:</label><br>
+                       <label><input type="radio" name="gender" value="Male" required> Male</label>
+                       <label><input type="radio" name="gender" value="Female" required> Female</label>
+                       <label><input type="radio" name="gender" value="Other" required> Other</label>
+                     </div>
+                </div>
+
+                <div class="row">
+                    <input type="email" id="email" placeholder="Email" required>
+                    <input type="number" id="age" placeholder="Age" required>
+                </div>
+
+                <input type="password" id="password" placeholder="Password" required>
+
+                <div class="terms">
+                    <label for="terms"><input type="checkbox" id="terms">
+                        I agree to the <a href="#">Terms & Conditions</a>
+                    </label>
+                </div>
+
+
+                <button type="submit">REGISTRATION</button>
+
+                <p class="or-text">OR</p>
+
+                <button type="button" class="google-btn">
+                    Sign in with Google
+                </button>
+
+            </form>
+        </div>
+
+    </div>
+
+    <script>
+        document.getElementById("registerForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            if (!document.getElementById("terms").checked) {
+                alert("Please agree to the Terms & Conditions.");
+                return;
+            }
+
+            const userData = {
+                name: document.getElementById("name").value,
+                gender: document.getElementById("gender").value,
+                email: document.getElementById("email").value,
+                age: document.getElementById("age").value
+            };
+
+            localStorage.setItem("userData", JSON.stringify(userData));
+
+            alert("Your form was successfully submitted!");
+
+            window.location.href = "submit.html";
+        });
+    </script>
+
+</body>
+</html>
